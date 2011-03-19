@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title>Google AJAX Language API Sample</title>
+    <script src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+
+    google.load("language", "1");
+
+    function search(e) {   
+      if (e.keyCode == 13) {
+        initialize();
+      }
+    }
+
+    function initialize() {   
+      // Grabbing the text to translate
+      var text = document.getElementById("search").value;
+    
+      // Translate from Spanish to English, and have the callback of the request
+      // put the resulting translation in the "translation" div.
+      // Note: by putting in an empty string for the source language ('es') then the translation
+      // will auto-detect the source language.
+      google.language.translate(text, 'it', 'en', function(result) {
+        var translated = document.getElementById("translation");
+        if (result.translation) {
+          translated.innerHTML = result.translation;
+        }
+      });
+    }
+    //google.setOnLoadCallback(initialize);
+    
+    </script>
+    <style>
+      body, input {
+        min-width:357px;
+        overflow-x:hidden;
+        color         : #6D6D6D;
+        font-size     : 12px;
+        font-family   : Trebuchet MS;
+      }
+      
+      #translation { 
+        padding:   5px;  
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <input type='text' value='' id='search' onkeypress='search(event)'/> 
+    </div>
+    <div id="translation"></div>
+  </body>
+</html>
+​

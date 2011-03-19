@@ -1,0 +1,12 @@
+{
+  "name": "Foreign bloggers translater",
+  "version": "1.0",
+  "description": "Translates a word in english",
+  "browser_action": {
+    "default_icon": "icon.jpg",
+    "popup": "popup.html"
+  },
+  "permissions": [
+    "http://api.flickr.com/"
+  ]
+}
